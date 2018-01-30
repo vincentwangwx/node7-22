@@ -21,7 +21,7 @@ app.get('/getTime', responseTime((req, res,time) => {
 }));
 
 app.get('/',(req, res,next) => {
-  console.log(`request ip is:${req.ip}.`);
+  //console.log(`request ip is:${req.ip}.`);
   //res.send("Hi,have a nice day!   response time is :"+time+"ms.");
   next();
 });
