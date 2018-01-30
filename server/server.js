@@ -5,14 +5,17 @@ var {ObjectID} = require('mongodb');
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
+var responseTime = require('response-time');
 
 var app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(responseTime());
 
-app.get('/', (req, res,next) => {
-  console.log(`request ip is:${req.ip}`);
+
+app.get('/', (req, res,time,next) => {
+  console.log(`request ip is:${req.ip}. times:${time} ms`);
   res.send("Hi,have a nice day!");
   next();
 });
