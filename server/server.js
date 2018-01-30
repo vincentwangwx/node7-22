@@ -11,6 +11,12 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
+app.get('/', (req, res,next) => {
+  console.log(`request ip is :${req.ip}`);
+  res.send("Hi,have a nice day!");
+  next();
+});
+
 app.post('/todos', (req, res) => {
   var todo = new Todo({
     text: req.body.text
@@ -33,7 +39,7 @@ app.get('/todos', (req, res) => {
 
 app.get('/welcome', (req, res) => {
   Todo.find().then((todos) => {
-    res.send("Hi,wish you a good day!");
+    res.send("Hi,have a nice day!");
   }, (e) => {
     res.status(400).send(e);
   });
