@@ -14,11 +14,11 @@ app.use(bodyParser.json());
 app.use(responseTime());
 
 
-app.get('/', (req, res,time,next) => {
+app.get('/', responseTime((req, res,time,next) => {
   console.log(`request ip is:${req.ip}. times:${time} ms`);
-  res.send("Hi,have a nice day!");
+  res.send("Hi,have a nice day!"+time+".");
   next();
-});
+}));
 
 app.post('/todos', (req, res) => {
   var todo = new Todo({
